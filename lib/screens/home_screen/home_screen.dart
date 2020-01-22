@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:xlo/controllers/home_controller/home_controller.dart';
 import 'package:xlo/widget/custom_drawer/custom_drawer.dart';
 import 'components/search_dialog.dart';
+import 'components/top_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+
     final homeController = Provider.of<HomeController>(context);
 
     _openSearch(String currentSearch) async {
@@ -27,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Observer(builder: (_) {
           return homeController.search.isEmpty
               ? Text("XLO")
@@ -58,6 +61,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: CustomDrawer(),
+      body: Column(
+        children: <Widget>[
+          TopBar(),
+        ],
+      ),
     );
   }
 }
