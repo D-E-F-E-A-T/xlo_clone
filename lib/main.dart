@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:xlo/controllers/home_controller/home_controller.dart';
 import 'package:xlo/screens/base_screen/base_screen.dart';
 import 'controllers/drawer_controller/drawer_controller.dart';
 
@@ -12,6 +13,9 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider<DrawerCustom>(
           create: (_) => DrawerCustom(),
+        ),
+        Provider<HomeController>(
+          create: (_) => HomeController(),
         )
       ],
       child: MaterialApp(
