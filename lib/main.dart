@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:xlo/controllers/home_controller/home_controller.dart';
 import 'package:xlo/screens/base_screen/base_screen.dart';
 import 'controllers/drawer_controller/drawer_controller.dart';
+import 'controllers/login_controller/login_controller.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
         ),
         Provider<HomeController>(
           create: (_) => HomeController(),
-        )
+        ),
+        Provider<LoginController>(
+          create: (_) => LoginController(),
+        ),
       ],
       child: MaterialApp(
         title: 'XLO',
