@@ -138,8 +138,15 @@ mixin _$LoginController on LoginControllerBase, Store {
   final _$loginWithEmailAsyncAction = AsyncAction('loginWithEmail');
 
   @override
-  Future loginWithEmail() {
+  Future<bool> loginWithEmail() {
     return _$loginWithEmailAsyncAction.run(() => super.loginWithEmail());
+  }
+
+  final _$loginWithFabebookAsyncAction = AsyncAction('loginWithFabebook');
+
+  @override
+  Future<bool> loginWithFabebook() {
+    return _$loginWithFabebookAsyncAction.run(() => super.loginWithFabebook());
   }
 
   final _$LoginControllerBaseActionController =
@@ -160,6 +167,16 @@ mixin _$LoginController on LoginControllerBase, Store {
     final _$actionInfo = _$LoginControllerBaseActionController.startAction();
     try {
       return super.setPassword(value);
+    } finally {
+      _$LoginControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic disableButton() {
+    final _$actionInfo = _$LoginControllerBaseActionController.startAction();
+    try {
+      return super.disableButton();
     } finally {
       _$LoginControllerBaseActionController.endAction(_$actionInfo);
     }

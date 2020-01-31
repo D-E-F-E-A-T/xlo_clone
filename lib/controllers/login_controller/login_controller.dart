@@ -9,9 +9,9 @@ class LoginController = LoginControllerBase with _$LoginController;
 abstract class LoginControllerBase with Store{
 
   @observable
-  String errorEmail = "false";
+  String errorEmail;
   @observable
-  String errorPassword = "false";
+  String errorPassword;
   @observable
   bool enabled = true;
   @observable
@@ -25,7 +25,7 @@ abstract class LoginControllerBase with Store{
 
 
   @computed
-  bool get validadoEmailPass => errorEmail == null && errorPassword == null;
+  bool get validadoEmailPass => errorEmail == "" && errorPassword == "";
 
 
   @action
@@ -36,7 +36,7 @@ abstract class LoginControllerBase with Store{
     }else if(!email.contains("@")){
       errorEmail = "email invalido";
     }else{
-      errorEmail = null;
+      errorEmail = "";
     }
   }
 
@@ -46,18 +46,32 @@ abstract class LoginControllerBase with Store{
     if(password.isEmpty){
       errorPassword = "senha invalida";
     }else{
-      errorPassword = null;
+      errorPassword = "";
     }
   }
 
   @action
-  loginWithEmail()async{
+ Future<bool> loginWithEmail()async{
     state = "LOADING";
     buttonDisable = true;
     await Future.delayed(Duration(seconds: 3));
     state = "DONE";
     buttonDisable = false;
+    return true;
   }
 
+  @action
+  Future<bool> loginWithFabebook()async{
+    state = "LOADING_FACEBOOK";
+    buttonDisable = true;
+    await Future.delayed(Duration(seconds: 3));
+    state = "DONE";
+    buttonDisable = false;
+    return true;
+  }
+  @action
+  disableButton(){
+    buttonDisable = false;
+  }
 
 }

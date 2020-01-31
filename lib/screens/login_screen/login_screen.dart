@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:xlo/controllers/login_controller/login_controller.dart';
+import 'package:xlo/screens/login_screen/components/or_divider.dart';
 
+import 'components/facebook_button.dart';
 import 'components/login_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,6 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              FacebookButton(),
+              OrDivider(),
               Padding(
                 padding: const EdgeInsets.only(top: 20, bottom: 11),
                 child: Text(
@@ -49,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   autocorrect: false,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    errorText: loginController.errorEmail == "false"
+                    errorText: loginController.errorEmail == ""
                         ? null
                         : loginController.errorEmail,
                     enabled: loginController.enabled,
@@ -88,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   autocorrect: false,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    errorText: loginController.errorPassword == "false"
+                    errorText: loginController.errorPassword == ""
                         ? null
                         : loginController.errorPassword,
                     enabled: loginController.enabled,
@@ -97,6 +101,32 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
               }),
               LoginButton(),
+              Divider(
+                color: Colors.grey,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
+                      "Não tem uma conta? ",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        "Cadastre-se",
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.blue,
+                          fontSize: 16,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),

@@ -20,11 +20,15 @@ class LoginButton extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
             onPressed: loginController.validadoEmailPass && loginController.buttonDisable == false
-                ? () {
-                    loginController.loginWithEmail();
+                ? () async{
+                    final bool success = await loginController.loginWithEmail();
+                    if(success){
+                      loginController.disableButton();
+                      Navigator.of(context).pop();
+                    }
                   }
                 : null,
-            child: loginController.state == "LOADING" && loginController.buttonDisable == true
+            child: loginController.state == "LOADING"
                 ? CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                   )
