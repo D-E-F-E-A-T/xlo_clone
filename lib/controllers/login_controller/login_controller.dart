@@ -30,6 +30,7 @@ abstract class LoginControllerBase with Store{
 
   @action
   setEmail(String value){
+    validadoEmailPass ? disableButton(false): disableButton(true);
     email = value;
     if(email.isEmpty){
       errorEmail = "email invalido";
@@ -42,6 +43,7 @@ abstract class LoginControllerBase with Store{
 
   @action
   setPassword(String value){
+    validadoEmailPass ? disableButton(false): disableButton(true);
     password = value;
     if(password.isEmpty){
       errorPassword = "senha invalida";
