@@ -173,10 +173,10 @@ mixin _$LoginController on LoginControllerBase, Store {
   }
 
   @override
-  dynamic disableButton() {
+  dynamic disableButton(bool value) {
     final _$actionInfo = _$LoginControllerBaseActionController.startAction();
     try {
-      return super.disableButton();
+      return super.disableButton(value);
     } finally {
       _$LoginControllerBaseActionController.endAction(_$actionInfo);
     }

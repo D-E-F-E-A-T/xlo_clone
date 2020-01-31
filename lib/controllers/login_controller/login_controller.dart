@@ -53,25 +53,25 @@ abstract class LoginControllerBase with Store{
   @action
  Future<bool> loginWithEmail()async{
     state = "LOADING";
-    buttonDisable = true;
+    disableButton(true);
     await Future.delayed(Duration(seconds: 3));
     state = "DONE";
-    buttonDisable = false;
+    disableButton(false);
     return true;
   }
 
   @action
   Future<bool> loginWithFabebook()async{
     state = "LOADING_FACEBOOK";
-    buttonDisable = true;
+    disableButton(true);
     await Future.delayed(Duration(seconds: 3));
     state = "DONE";
-    buttonDisable = false;
+    disableButton(false);
     return true;
   }
   @action
-  disableButton(){
-    buttonDisable = false;
+  disableButton(bool value){
+    buttonDisable = value;
   }
 
 }

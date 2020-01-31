@@ -21,7 +21,7 @@ class FacebookButton extends StatelessWidget {
           onPressed: loginController.state == "LOADING_FACEBOOK" ? null : ()async{
             final bool success = await loginController.loginWithFabebook();
             if(success){
-              loginController.disableButton();
+              loginController.disableButton(false);
               Navigator.of(context).pop();
             }
           },

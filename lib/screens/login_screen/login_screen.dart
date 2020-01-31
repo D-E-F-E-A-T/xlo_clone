@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:xlo/controllers/login_controller/login_controller.dart';
 import 'package:xlo/screens/login_screen/components/or_divider.dart';
-
 import 'components/facebook_button.dart';
 import 'components/login_button.dart';
 
@@ -12,10 +11,13 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
+
 class _LoginScreenState extends State<LoginScreen> {
+
   @override
   Widget build(BuildContext context) {
     final loginController = Provider.of<LoginController>(context);
+    print(loginController.state+loginController.buttonDisable.toString());
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -133,4 +135,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
+
 }

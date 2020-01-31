@@ -23,7 +23,7 @@ class LoginButton extends StatelessWidget {
                 ? () async{
                     final bool success = await loginController.loginWithEmail();
                     if(success){
-                      loginController.disableButton();
+                      loginController.disableButton(true);
                       Navigator.of(context).pop();
                     }
                   }
